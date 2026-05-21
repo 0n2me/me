@@ -1,0 +1,75 @@
+---
+
+import InstagramIcon from "./icons/InstagramIcon.astro";
+import SubstackIcon from "./icons/SubstackIcon.astro";
+import TwitterIcon from "./icons/TwitterIcon.astro";
+
+const socials = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com",
+    count: "660k",
+    Icon: InstagramIcon,
+  },
+  {
+    label: "Twitter",
+    href: "https://x.com/0n2me",
+    count: "109k",
+    Icon: TwitterIcon,
+  },
+  {
+    label: "Substack",
+    href: "https://www.substack.com/0n2me",
+    count: "1.2k",
+    Icon: SubstackIcon,
+  },
+];
+---
+
+<div id="container" class="min-h-screen px-6 py-20">
+  <header
+    class="mx-auto grid w-full max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-4"
+  >
+    <nav
+      class="flex items-center gap-7 text-[#777777]"
+      aria-label="Social links"
+    >
+      {
+        socials.map((social) => {
+          const Icon = social.Icon;
+
+          return (
+            <a
+              href={social.href}
+              class="inline-flex h-6 items-center gap-1.5 text-xs font-medium tracking-[0.12em] transition hover:text-white/85"
+              aria-label={social.label}
+              target={social.href.startsWith("mailto:") ? undefined : "_blank"}
+              rel={social.href.startsWith("mailto:") ? undefined : "noreferrer"}
+            >
+              <Icon class="size-4 shrink-0" />
+              {social.count && <span>{social.count}</span>}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <div class="flex justify-start">
+      <a
+        href="mailto:hello@edemkwaku.com"
+        class="inline-flex h-9 items-center justify-center rounded-full border border-white/20 px-4 text-xs font-semibold uppercase tracking-[0.11em] text-white/82 transition"
+      >
+        Edem Kwaku
+      </a>
+    </div>
+
+    <p class="text-xs font-medium uppercase tracking-[0.12em] text-white/85">
+      <a
+        href="mailto:hello@edemkwaku.com"
+        class="inline-flex h-9 items-center justify-center text-xs font-semibold uppercase tracking-[0.11em] text-white/82 transition hover:text-[#777777]"
+      >
+        Work Inquiry
+      </a>
+    </p>
+  </header>
+</div>
